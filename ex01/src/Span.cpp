@@ -58,10 +58,8 @@ unsigned int Span::shortestSpan() const
 		for (vector<int>::const_iterator e_it = f_it + 1; e_it != end; ++e_it) {
 			if (*f_it == *e_it)
 				return (0);
-			else if (*f_it > *e_it && static_cast<unsigned int>(abs(*f_it - *e_it)) < span)
+			else if (static_cast<unsigned int>(abs(*f_it - *e_it)) < span)
 				span = abs(*f_it - *e_it);
-			else if (*e_it > *f_it && static_cast<unsigned int>(abs(*e_it - *f_it)) < span)
-				span = abs(*e_it - *f_it);
 		}
 	}
 	return (span);
@@ -71,16 +69,10 @@ unsigned int Span::longestSpan() const
 {
 	if (m_size < 2)
 		throw Span::InvalidContainerSize();
-	int min = numeric_limits<int>::max();
-	int max = numeric_limits<int>::min();
-	vector<int>::const_iterator end = m_cont.end();
-	for (vector<int>::const_iterator it = m_cont.begin(); it != end; ++it) {
-		if (*it < min)
-			min = *it;
-		if (*it > max)
-			max = *it;
-	}
-	return (max - min);
+	return (
+		*std::max_element(m_cont.begin(), m_cont.end())
+		- *std::min_element(m_cont.begin(), m_cont.end())
+	);
 }
 
 static void printInt(const int n)

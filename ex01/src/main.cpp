@@ -83,6 +83,8 @@ int main(void)
 		printBold("thousand thousand numbers (no print)");
 		Span s(100000);
 		s.addNumber(100000, 1);
+		std::cout << s.longestSpan() << '\n';
+		std::cout << s.shortestSpan() << '\n';
 		printBold("-> ok");
 	} catch (std::exception const& e) {
 		printException(e);

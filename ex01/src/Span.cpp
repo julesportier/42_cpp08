@@ -1,9 +1,7 @@
 #include "Span.h"
 #include <algorithm>
 #include <iostream>
-#include <limits>
-
-using std::numeric_limits;
+#include <numeric>
 
 /**************************
 * CONSTRUCTORS/DESTRUCTOR *
@@ -52,17 +50,10 @@ unsigned int Span::shortestSpan() const
 {
 	if (m_size < 2)
 		throw Span::InvalidContainerSize();
-	unsigned int span = numeric_limits<unsigned int>::max();
-	vector<int>::const_iterator end = m_cont.end();
-	for (vector<int>::const_iterator f_it = m_cont.begin(); f_it != end; ++f_it) {
-		for (vector<int>::const_iterator e_it = f_it + 1; e_it != end; ++e_it) {
-			if (*f_it == *e_it)
-				return (0);
-			else if (static_cast<unsigned int>(abs(*f_it - *e_it)) < span)
-				span = abs(*f_it - *e_it);
-		}
-	}
-	return (span);
+	vector<int> diff = m_cont;
+	std::sort(diff.begin(), diff.end());
+	std::adjacent_difference(diff.begin(), diff.end(), diff.begin());
+	return (*std::min_element(diff.begin() + 1, diff.end()));
 }
 
 unsigned int Span::longestSpan() const

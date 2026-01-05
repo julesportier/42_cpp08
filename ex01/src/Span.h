@@ -9,12 +9,12 @@ using std::size_t;
 class Span {
 public:
 	Span();
-	Span(unsigned int n);
-	Span(Span const& src);
+	Span(const unsigned int n);
+	Span(const Span& src);
 	~Span();
-	Span& operator=(Span const& src);
-	void addNumber(int i);
-	void addNumber(size_t count, const int value);
+	Span& operator=(const Span& src);
+	void addNumber(const int i);
+	void addNumber(const unsigned int count, const int value);
 	unsigned int shortestSpan() const;
 	unsigned int longestSpan() const;
 	void printContainer() const;

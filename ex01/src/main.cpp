@@ -115,6 +115,24 @@ int main(void)
 		printException(e);
 	}
 
+	printBold("\nlongestSpan() full negative:");
+	try {
+		Span s(5);
+		s.addNumber(-1);
+		s.addNumber(-6);
+		s.addNumber(-3);
+		s.printContainer();
+		std::cout << s.longestSpan() << '\n';
+		s.addNumber(-17);
+		s.printContainer();
+		std::cout << s.longestSpan() << '\n';
+		s.addNumber(-37);
+		s.printContainer();
+		std::cout << s.longestSpan() << '\n';
+	} catch (std::exception const& e) {
+		printException(e);
+	}
+
 	printBold("\nlongestSpan() except:");
 	try {
 		Span s(0);

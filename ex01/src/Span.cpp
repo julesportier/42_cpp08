@@ -10,7 +10,7 @@ Span::Span() : m_size(0) {};
 
 Span::Span(unsigned int n) : m_size(n) {};
 
-Span::Span(Span const& src)
+Span::Span(const Span& src)
 	: m_size(src.m_size)
 	, m_cont(src.m_cont)
 {};
@@ -20,7 +20,7 @@ Span::~Span() {};
 /************
 * OPERATORS *
 ************/
-Span& Span::operator=(Span const& src)
+Span& Span::operator=(const Span& src)
 {
 	if (this == &src)
 		return (*this);
@@ -32,14 +32,14 @@ Span& Span::operator=(Span const& src)
 /**********
 * METHODS *
 **********/
-void Span::addNumber(int i)
+void Span::addNumber(const int i)
 {
 	if (m_cont.size() >= m_size)
 		throw Span::ContainerOutOfRange();
 	m_cont.push_back(i);
 }
 
-void Span::addNumber(size_t count, const int value)
+void Span::addNumber(const unsigned int count, const int value)
 {
 	if (m_cont.size() + count > m_size) 
 		throw Span::ContainerOutOfRange();

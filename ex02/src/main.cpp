@@ -2,14 +2,10 @@
 #include <iostream>
 #include <string>
 
-static void printBold(std::string str) {
+static void printBold(std::string str)
+{
     std::cout << "\e[1m" << str << "\e[0m\n";
 }
-//
-// static void printException(std::exception const& e)
-// {
-// 	std::cout << "Error: " << e.what() << '\n';
-// }
 
 int main(void)
 {

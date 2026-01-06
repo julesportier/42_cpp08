@@ -4,7 +4,6 @@
 # include <vector>
 
 using std::vector;
-using std::size_t;
 
 class Span {
 public:

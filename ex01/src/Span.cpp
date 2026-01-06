@@ -73,11 +73,7 @@ static void printInt(const int n)
 
 void Span::printContainer() const
 {
-	std::for_each(
-		m_cont.begin(),
-		m_cont.end(),
-		printInt
-	);
+	std::for_each(m_cont.begin(), m_cont.end(), printInt);
 	std::cout << '\n';
 }
 

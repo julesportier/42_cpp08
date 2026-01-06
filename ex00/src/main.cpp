@@ -2,8 +2,6 @@
 #include <deque>
 #include <vector>
 
-using std::vector;
-
 static void print_bold(std::string str)
 {
 	std::cout << "\e[1m" << str << "\e[0m\n";
@@ -12,11 +10,11 @@ static void print_bold(std::string str)
 int main(void)
 {
 	print_bold("vector:");
-	vector<int> v;
+	std::vector<int> v;
 	v.push_back(1);
 	v.push_back(2);
 	v.push_back(3);
-	vector<int>::iterator it = easyfind(v, 1);
+	std::vector<int>::iterator it = easyfind(v, 1);
 	print_found_iterator(v, it);
 	it = easyfind(v, 2);
 	print_found_iterator(v, it);

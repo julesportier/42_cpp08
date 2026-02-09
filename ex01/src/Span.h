@@ -3,8 +3,6 @@
 
 # include <vector>
 
-using std::vector;
-
 class Span {
 public:
 	Span();
@@ -25,7 +23,7 @@ public:
 	};
 private:
 	unsigned int m_size;
-	vector<int> m_cont;
+	std::vector<int> m_cont;
 };
 
 #endif

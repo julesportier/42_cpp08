@@ -22,10 +22,10 @@ Span::~Span() {};
 ************/
 Span& Span::operator=(const Span& src)
 {
-	if (this == &src)
-		return (*this);
-	m_size = src.m_size;
-	m_cont = src.m_cont;
+	if (this != &src) {
+		m_size = src.m_size;
+		m_cont = src.m_cont;
+	}
 	return (*this);
 }
 
@@ -50,7 +50,7 @@ unsigned int Span::shortestSpan() const
 {
 	if (m_size < 2)
 		throw Span::InvalidContainerSize();
-	vector<int> diff = m_cont;
+	std::vector<int> diff = m_cont;
 	std::sort(diff.begin(), diff.end());
 	std::adjacent_difference(diff.begin(), diff.end(), diff.begin());
 	return (*std::min_element(diff.begin() + 1, diff.end()));

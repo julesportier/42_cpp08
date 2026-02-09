@@ -49,8 +49,8 @@ int main(void)
 	--it;
 	while (it != ite)
 	{
-	std::cout << *it << std::endl;
-	++it;
+		std::cout << *it << std::endl;
+		++it;
 	}
 	std::stack<int> s(mstack);
 
@@ -79,5 +79,52 @@ int main(void)
 	std::cout << a_cpy.top() << '\n';
 	printBold("begin(): ");
 	std::cout << *a_cpy.begin() << '\n';
+
+	printBold("iterator:");
+	MutantStack<int> is;
+	is.push(1);
+	is.push(2);
+	is.push(3);
+	it = is.begin();
+	ite = is.end();
+	while (it != ite)
+	{
+		std::cout << *it << '\n';
+		*it += 1;
+		std::cout << "*it + 1 == " << *it << '\n';
+		*it -= 1;
+		++it;
+	}
+	printBold("const iterator:");
+	MutantStack<int>::const_iterator cit = is.begin();
+	MutantStack<int>::const_iterator cite = is.end();
+	while (cit != cite)
+	{
+		std::cout << *cit << '\n';
+		// Can't change const iterator
+		// *cit += 1;
+		++cit;
+	}
+	printBold("reverse iterator:");
+	MutantStack<int>::reverse_iterator rit = is.rbegin();
+	MutantStack<int>::reverse_iterator rite = is.rend();
+	while (rit != rite)
+	{
+		std::cout << *rit << '\n';
+		*rit += 1;
+		std::cout << "*rit + 1 == " << *rit << '\n';
+		*rit -= 1;
+		++rit;
+	}
+	printBold("const reverse iterator:");
+	MutantStack<int>::const_reverse_iterator crit = is.rbegin();
+	MutantStack<int>::const_reverse_iterator crite = is.rend();
+	while (crit != crite)
+	{
+		std::cout << *crit << '\n';
+		// Can't change const riterator
+		// *crit += 1;
+		++crit;
+	}
 	return (0);
 }

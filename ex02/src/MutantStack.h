@@ -6,9 +6,6 @@
 
 template <class T, class Container = std::deque<T> >
 class MutantStack : public std::stack<T, Container> {
-
-using std::stack<T, Container>::c;
-
 public:
 	MutantStack() {};
 	MutantStack(const MutantStack& src) {
@@ -23,12 +20,11 @@ public:
 	};
 
 	typedef typename Container::iterator iterator;
-	iterator begin() { return (c.begin()); };
-	iterator end() { return (c.end()); };
+	iterator begin() { return (std::stack<T, Container>::c.begin()); };
+	iterator end() { return (std::stack<T, Container>::c.end()); };
 	typedef typename Container::const_iterator const_iterator;
-	const_iterator begin() const { return (c.begin()); };
-	const_iterator end() const { return (c.end()); };
-
+	const_iterator begin() const { return (std::stack<T, Container>::c.begin()); };
+	const_iterator end() const { return (std::stack<T, Container>::c.end()); };
 };
 
 #endif
